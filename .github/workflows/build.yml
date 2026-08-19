@@ -18,13 +18,12 @@ jobs:
         run: flutter pub get
         working-directory: ./simple_live_tv_app
 
-      - name: Build Windows
+      - name: Build Windows release
         run: flutter build windows --release
         working-directory: ./simple_live_tv_app
 
-      # cmd查看目录文件
-      - name: List build output
-        run: dir /s simple_live_tv_app\build\windows
+      - name: List build output (PowerShell)
+        run: Get‑ChildItem -Path build/windows -Recurse
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
