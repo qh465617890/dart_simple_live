@@ -22,8 +22,13 @@ jobs:
         run: flutter build windows --release
         working-directory: ./simple_live_tv_app
 
+      # 调试：打印目录，确认编译产物真实存在
+      - name: List build output
+        run: Get‑ChildItem simple_live_tv_app/build/windows -Recurse
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: simple-live-tv-windows
           path: simple_live_tv_app/build/windows/**
+          if-no-files-found: error
