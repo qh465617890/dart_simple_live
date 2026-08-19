@@ -22,9 +22,9 @@ jobs:
         run: flutter build windows --release
         working-directory: ./simple_live_tv_app
 
-      # 调试：打印目录，确认编译产物真实存在
+      # cmd查看目录文件
       - name: List build output
-        run: Get‑ChildItem simple_live_tv_app/build/windows -Recurse
+        run: dir /s simple_live_tv_app\build\windows
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
