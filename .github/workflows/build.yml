@@ -1,10 +1,10 @@
-name: build apk
+name: Build Windows
 on:
   workflow_dispatch:
 
 jobs:
-  build-android:
-    runs-on: ubuntu‑latest
+  windows-build:
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
         with:
@@ -14,14 +14,16 @@ jobs:
         with:
           flutter-version: '3.32.0'
 
-      - run: flutter pub get
-        working‑directory: ./simple_live_app
+      - name: Get dependencies
+        run: flutter pub get
+        working-directory: ./simple_live_app
 
-      - run: flutter build apk --release
-        working‑directory: ./simple_live_app
+      - name: Build Windows
+        run: flutter build windows --release
+        working-directory: ./simple_live_app
 
-      - name: upload artifact
-        uses: actions/upload‑artifact@v4
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: app‑apk
-          path: simple_live_app/build/app/outputs/flutter‑apk/release/app‑release.apk
+          name: simple-live-windows
+          path: simple_live_app/build/windows/x64/release/
