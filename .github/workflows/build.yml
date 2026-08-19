@@ -22,8 +22,9 @@ jobs:
         run: flutter build windows --release
         working-directory: ./simple_live_tv_app
 
-      - name: List build output (PowerShell)
-        run: Get‑ChildItem -Path build/windows -Recurse
+      # 这里全部用普通英文减号 "-"
+      - name: List build output
+        run: Get-ChildItem -Path build/windows -Recurse
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
